@@ -1,0 +1,12 @@
+GET index.html
+    = i got index.html to show up on localhost:3000/api
+GET notes.html
+    = i got notes.html to show up on localhost:3000/api/notes
+    = also works when you click the 'get started' button
+Get note buttons to work
+    - save note
+        =
+    - new note
+        =
+    - clear form
+        =
