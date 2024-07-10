@@ -5,8 +5,12 @@ GET notes.html
     = also works when you click the 'get started' button
 Get note buttons to work
     - save note
-        =
+        = just had to add fs.writeFileSync and actually save
     - new note
         =
     - clear form
-        =
+        = worked as soon as I made the proper route
+How can I see old notes?
+    =
+How can I delete notes?
+    =

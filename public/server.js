@@ -42,13 +42,25 @@ const saveNotes = () => {
   fs.writeFileSync(filePath, JSON.stringify(notes, null, 2), 'utf8');
 };
 
+const generateId = (array) => {
+  const maxId = array.reduce((max, item) => (item.id > max ? item.id : max), 0);
+  let nextId = maxId + 1;
+  return array.map(item => ({
+    ...item,
+    id: item.id ? item.id : nextId++
+  }));
+};
+
 app.post('/api/notes', (req, res) => {
   const { title, text } = req.body;
   const newNote = {
-    title, text
+    id: null, title, text
   };
   notes.push(newNote);
-  saveNotes();
+  const notesWithId = generateId(notes);
+  const updatedNote = notesWithId.find(note => note.title === newNote.title && note.text === newNote.text);
+  newNote.id = updatedNote.id;
+  saveNotes(notesWithId);
   console.log('new note added:', newNote);
   res.status(201).json(newNote);
 });
