@@ -31,6 +31,15 @@ app.get('/assets/css/styles.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'css', 'styles.css'));
 });
 
+app.get('/api/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, '../db', 'db.json'));
+});
+
+app.post('/api/notes', (req, res) => {
+  console.log('request:', req.body);
+  res.send('request received');
+});
+
 //allows the server to actually run
 app.listen(PORT, () => {
   console.log('Server is running');
