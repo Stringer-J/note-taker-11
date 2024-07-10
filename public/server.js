@@ -35,9 +35,22 @@ app.get('/api/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '../db', 'db.json'));
 });
 
+let notes = [];
+
+const saveNotes = () => {
+  const filePath = path.resolve(__dirname, '../db/db.json');
+  fs.writeFileSync(filePath, JSON.stringify(notes, null, 2), 'utf8');
+};
+
 app.post('/api/notes', (req, res) => {
-  console.log('request:', req.body);
-  res.send('request received');
+  const { title, text } = req.body;
+  const newNote = {
+    title, text
+  };
+  notes.push(newNote);
+  saveNotes();
+  console.log('new note added:', newNote);
+  res.status(201).json(newNote);
 });
 
 //allows the server to actually run
