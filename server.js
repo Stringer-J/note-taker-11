@@ -34,8 +34,23 @@ app.get('/assets/css/styles.css', (req, res) => {
 });
 
 //gets the db.json so we can read and write notes to and from it
+// app.get('/api/notes', (req, res) => {
+//   const filePath= res.sendFile(path.join(__dirname, 'db', 'db.json'));
+//   console.log(filePath);
+//   console.log(__dirname);
+// });
+
 app.get('/api/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './db/db.json'));
+  const filePath = path.join(__dirname, 'db', 'db.json');
+  console.log(filePath);  // Log the file path to check if it's correct
+  console.log(__dirname); // Log the directory name
+
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error('Error sending file:', err);
+      res.status(err.status).end();
+    }
+  });
 });
 
 //creates an array for saving notes to
@@ -43,7 +58,7 @@ let notes = [];
 
 //function that load notes you already saved
 const loadNotes = () => {
-  const filePath = path.resolve(__dirname, './db/db.json');
+  const filePath = path.resolve(__dirname, 'db', 'db.json');
   const data = fs.readFileSync(filePath, 'utf8');
   notes = JSON.parse(data);
 };
@@ -52,7 +67,7 @@ loadNotes(); //actually rund the load function
 
 //function that writes notes to db.json
 const saveNotes = () => {
-  const filePath = path.resolve(__dirname, './db/db.json');
+  const filePath = path.resolve(__dirname, 'db', 'db.json');
   fs.writeFileSync(filePath, JSON.stringify(notes, null, 2), 'utf8'); //writes file, stringifies 'notes' and makes the output object look nicer for people
 };
 
