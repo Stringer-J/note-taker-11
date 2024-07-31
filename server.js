@@ -36,23 +36,8 @@ app.get('/assets/css/styles.css', (req, res) => {
 });
 
 //gets the db.json so we can read and write notes to and from it
-// app.get('/api/notes', (req, res) => {
-//   const filePath= res.sendFile(path.join(__dirname, 'db', 'db.json'));
-//   console.log(filePath);
-//   console.log(__dirname);
-// });
-
 app.get('/api/notes', (req, res) => {
-  const filePath = path.join(__dirname, 'db', 'db.json');
-  console.log(filePath);  // Log the file path to check if it's correct
-  console.log(__dirname); // Log the directory name
-
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      console.error('Error sending file:', err);
-      res.status(err.status).end();
-    }
-  });
+  res.sendFile(path.join(__dirname, 'db', 'db.json'));
 });
 
 //creates an array for saving notes to
