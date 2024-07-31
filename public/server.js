@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 //sets up route to notes
 //localhost:3001/notes
-app.get('/api/notes', (req, res) => {
+app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'notes.html'));
 });
 
