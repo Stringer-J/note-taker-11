@@ -37,7 +37,7 @@ app.get('/assets/css/styles.css', (req, res) => {
 
 //gets the db.json so we can read and write notes to and from it
 app.get('/api/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'db', 'db.json'));
+  res.sendFile(path.join(process.cwd(), 'db', 'db.json'));
 });
 
 //creates an array for saving notes to
