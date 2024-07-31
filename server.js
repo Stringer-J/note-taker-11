@@ -9,7 +9,7 @@ app.use(express.json()); //incoming objects recognized as json
 app.use(express.urlencoded({ extended: true }));
 
 //sets root directory to 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 //sets up first route to index
 //localhost:3001/
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 //sets up route to notes
 //localhost:3001/notes
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'notes.html'));
+    res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 
 //gets the index.js file so we can use it
@@ -35,8 +35,7 @@ app.get('/assets/css/styles.css', (req, res) => {
 
 //gets the db.json so we can read and write notes to and from it
 app.get('/api/notes', (req, res) => {
-  const filePath = path.resolve(__dirname, './db/db.json')
-  res.sendFile(filePath);
+  res.sendFile(path.join(__dirname, './db/db.json'));
 });
 
 //creates an array for saving notes to
