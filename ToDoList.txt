@@ -1,16 +1,16 @@
 GET index.html
-    = i got index.html to show up on localhost:3000/api
+    = i got index.html to show up on localhost:3001/api
 GET notes.html
-    = i got notes.html to show up on localhost:3000/api/notes
+    = i got notes.html to show up on localhost:3001/api/notes
     = also works when you click the 'get started' button
 Get note buttons to work
     - save note
         = just had to add fs.writeFileSync and actually save
     - new note
-        =
+        = started to work once notes had unique id's
     - clear form
         = worked as soon as I made the proper route
 How can I see old notes?
-    =
+    = started to work once notes had unique id's
 How can I delete notes?
     =

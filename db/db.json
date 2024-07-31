@@ -1,17 +1,12 @@
 [
   {
     "id": 1,
-    "title": "Note One",
-    "text": "kljdslfkjsdl"
+    "title": "It's A Note",
+    "text": "This is not a note"
   },
   {
     "id": 2,
-    "title": "Note Two",
-    "text": "kjdsflkjasdlkdjf"
-  },
-  {
-    "id": 3,
-    "title": "Note Three",
-    "text": "sdfasdfasd"
+    "title": "Hey",
+    "text": "Notes"
   }
 ]
