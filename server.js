@@ -1,4 +1,5 @@
 const express = require('express'); //lets me use express
+const router = express.Router();
 const path = require('path'); //lets me use path
 const fs = require('fs'); //lets me use fs
 
@@ -7,20 +8,21 @@ const PORT = process.env.PORT || 3001; //sets port to 3001 regardless of actual 
 
 app.use(express.json()); //incoming objects recognized as json
 app.use(express.urlencoded({ extended: true }));
+app.use("/api", router)
 
 //sets root directory to 'public'
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 //sets up first route to index
 //localhost:3001/
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 //sets up route to notes
 //localhost:3001/notes
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/notes.html'));
+    res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
 //gets the index.js file so we can use it
