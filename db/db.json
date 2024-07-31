@@ -1,12 +1,17 @@
 [
   {
     "id": 1,
-    "title": "It's A Note",
-    "text": "This is not a note"
+    "title": "Hello",
+    "text": "fjskdlaj"
   },
   {
     "id": 2,
-    "title": "Hey",
-    "text": "Notes"
+    "title": "another",
+    "text": "aaaa"
+  },
+  {
+    "id": 3,
+    "title": "whatever",
+    "text": "this is fine"
   }
 ]
