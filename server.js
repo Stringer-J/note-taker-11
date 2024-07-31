@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 //sets up route to notes
 //localhost:3001/notes
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'notes.html'));
+    res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 
 //gets the index.js file so we can use it
@@ -35,15 +35,24 @@ app.get('/assets/css/styles.css', (req, res) => {
 
 //gets the db.json so we can read and write notes to and from it
 app.get('/api/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '../db', 'db.json'));
+  res.sendFile(path.join(__dirname, './db/db.json'));
 });
 
 //creates an array for saving notes to
 let notes = [];
 
+//function that load notes you already saved
+const loadNotes = () => {
+  const filePath = path.resolve(__dirname, './db/db.json');
+  const data = fs.readFileSync(filePath, 'utf8');
+  notes = JSON.parse(data);
+};
+
+loadNotes(); //actually rund the load function
+
 //function that writes notes to db.json
 const saveNotes = () => {
-  const filePath = path.resolve(__dirname, '../db/db.json');
+  const filePath = path.resolve(__dirname, './db/db.json');
   fs.writeFileSync(filePath, JSON.stringify(notes, null, 2), 'utf8'); //writes file, stringifies 'notes' and makes the output object look nicer for people
 };
 
