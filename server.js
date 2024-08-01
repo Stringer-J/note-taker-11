@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001; //sets port to 3001 regardless of actual 
 
 app.use(express.json()); //incoming objects recognized as json
 app.use(express.urlencoded({ extended: true }));
-app.use("/api", router)
+app.use("/api", router) //possibly useless but I don't want to delete in case it breaks something
 
 //sets root directory to 'public'
 app.use(express.static(path.join(__dirname, 'public')));
